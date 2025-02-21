@@ -128,3 +128,55 @@ export async function deleteCategory(req,res) {
     }
 
 }
+
+export async function getAllCategories(req,res){
+    try{
+        let categories=await Category.find()
+        let categoriesObjects=categories.map((category)=>category.toObject())
+        return res.status(200).json({
+            'message':'Categories fetched successfully',
+            'statusCode':200,
+            'data':categoriesObjects
+        })
+    }
+    catch(err){
+        return res.status(500).json({
+            'message':err.message,
+            'statusCode':500
+        })
+    }
+}
+
+export const getCategoryById=async(req,res)=>{
+    try{
+        let categoryId=req.params.id
+
+        if(!categoryId){
+            return res.status(400).json({
+                'message':'Category id is required',
+                'statusCode':400
+            })
+        }
+
+        let category=await Category.findById(categoryId)
+
+        if(!category){
+            return res.status(404).json({
+                'message': 'Category not found',
+                'statusCode': 404
+            })
+        }
+
+        return res.status(200).json({
+            'message':'Category fetched successfully',
+            'statusCode':200,
+            'data':category
+        })
+    }
+    catch(err){
+        return res.status(500).json({
+            'message':err.message,
+            'statusCode':500
+        })
+    }
+}
