@@ -78,9 +78,9 @@ export async function updateCategory(req,res){
         }
 
 
-        return res.status(200).json({
+        return res.status(202).json({
             'message':'Category updated successfully',
-            'statusCode':200,
+            'statusCode':202,
             'data':updatedCategory
         })
 
@@ -167,10 +167,12 @@ export const getCategoryById=async(req,res)=>{
             })
         }
 
+        let categoryObject=category.toObject()
+
         return res.status(200).json({
             'message':'Category fetched successfully',
             'statusCode':200,
-            'data':category
+            'data':categoryObject
         })
     }
     catch(err){

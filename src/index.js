@@ -4,6 +4,8 @@ import dotenv from "dotenv"
 import connectToMongoDB from "./database/MongoDatabaseConnection.js";
 import cookieParser from "cookie-parser";
 import categoryRouter from "./Router/categoryRouter.js";
+import brandRouter from "./Router/brandRouter.js";
+import productRouter from "./Router/productRouter.js";
 
 dotenv.config()
 
@@ -23,6 +25,8 @@ app.use(cors({
 app.use(express.urlencoded({extended:true}))
 
 app.use("/api/category",categoryRouter)
+app.use("/api/brand",brandRouter)
+app.use("/api/product",productRouter)
 
 app.get("/",(req,res)=> {
     res.json({'message':'Hello World'})
