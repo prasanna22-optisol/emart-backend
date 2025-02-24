@@ -125,3 +125,46 @@ export async function deleteProduct(req,res){
         })
     }
 }
+
+export async function getNewProducts(req,res){
+    try{
+        const products=await Product.find({
+            isNewProduct:true
+        })
+
+        let productObjects=products.map(p=>p.toObject())
+        return res.status(200).json({
+            'message':'New products fetched successfully',
+            'statusCode':200,
+            'data':productObjects
+        })
+    }
+    catch(err){
+        return res.status(500).json({
+            'message':err.message,
+            'statusCode':500
+        })
+    }
+}
+
+
+export async function getFeaturedProducts(req,res){
+    try{
+        const products=await Product.find({
+            isFeatured:true
+        })
+
+        let productObjects=products.map(p=>p.toObject())
+        return res.status(200).json({
+            'message':'Featured products fetched successfully',
+            'statusCode':200,
+            'data':productObjects
+        })
+    }
+    catch(err){
+        return res.status(500).json({
+            'message':err.message,
+            'statusCode':500
+        })
+    }
+}
