@@ -1,6 +1,7 @@
 import express from "express";
 import {addCategory, deleteCategory, getAllCategories, getCategoryById, updateCategory} from "../Controller/categoryController.js";
 import category from "../Schema/category.js";
+import verifyToken from "../Middleware/authMiddleware.js";
 
 
 const categoryRouter=express.Router()

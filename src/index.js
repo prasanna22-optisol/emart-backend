@@ -8,6 +8,7 @@ import brandRouter from "./Router/brandRouter.js";
 import productRouter from "./Router/productRouter.js";
 import customerRouter from "./Router/customerRouter.js";
 import authRouter from "./Router/authRouter.js";
+import verifyToken, { isAdmin } from "./Middleware/authMiddleware.js";
 
 dotenv.config()
 
@@ -26,10 +27,10 @@ app.use(cors({
 }))
 app.use(express.urlencoded({extended:true}))
 
-app.use("/api/category",categoryRouter)
-app.use("/api/brand",brandRouter)
-app.use("/api/product",productRouter)
-app.use("/api/home",customerRouter)
+app.use("/api/category",verifyToken,isAdmin,categoryRouter)
+app.use("/api/brand",verifyToken,isAdmin,brandRouter)
+app.use("/api/product",verifyToken,isAdmin,productRouter)
+app.use("/api/home",verifyToken,customerRouter)
 app.use("/api/auth",authRouter)
 
 app.get("/",(req,res)=> {
