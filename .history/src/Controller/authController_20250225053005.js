@@ -1,18 +1,7 @@
 import bcrypt from "bcrypt"
-import { registerValidation } from "../Validation/AuthValidation"
 
 export async function register(req,res){
     try{
-
-        const {error}=registerValidation(req.body)
-
-        if(error){
-            return res.status(400).json({
-                message:error.details[0].message,
-                statusCode:400
-            })
-        }
-
         const {name,email,password}=req.body
         const userExist=await User.findOne({email})
         if(userExist){
