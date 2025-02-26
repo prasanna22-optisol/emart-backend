@@ -212,7 +212,6 @@ export async function getProductsListing(req, res) {
         if (brandId) {
             queryFilter.brandId = brandId;
         }
-        // console.log("queryFilter", queryFilter);
         const products = await Product.find(queryFilter)
             .sort({
                 [sortBy]: +sortOrder,
