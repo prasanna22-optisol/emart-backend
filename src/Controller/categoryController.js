@@ -140,6 +140,7 @@ export async function getAllCategories(req,res){
         })
     }
     catch(err){
+        console.log(err.message)
         return res.status(500).json({
             'message':err.message,
             'statusCode':500

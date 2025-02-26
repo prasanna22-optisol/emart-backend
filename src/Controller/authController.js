@@ -101,7 +101,7 @@ export async function login(req,res){
                 isAdmin: user.isAdmin,
             },
             process.env.JWT_SECRET,
-            { expiresIn: '5h' }
+            { expiresIn: '85h' }
         )
 
         return res.status(200).json({
