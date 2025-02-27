@@ -69,15 +69,7 @@ customerRouter.post("/add-order",async(req,res)=>{
     })
 })
 
-customerRouter.get("/orders",async(req,res)=>{
-    const userId=req.user.id
-    const orders=await getCustomerOrders(userId)
-    res.status(200).json({
-        statusCode:200,
-        message:"Orders fetched successfully",
-        data:orders
-    })
-})
+
 
 
 export default customerRouter
