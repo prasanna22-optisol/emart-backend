@@ -10,3 +10,6 @@ const wishlistSchema = new mongoose.Schema({
         ref:"products"
     }
 })
+
+const WishList=mongoose.model("wishlists",wishlistSchema)
+export default WishList;
