@@ -1,13 +1,21 @@
-import Order from "../Schema/order";
-
+import Order from "../Schema/order.js";
+import mongoose from "mongoose";
 export async function addOrder(orderModel,userId){
-    let order=new Order({
-        ...orderModel,
-        userId:userId,
-        status:"in-progress"
-    })
+    // if (!mongoose.Types.ObjectId.isValid(userId)) {
+    //     throw new Error("Invalid userId format");
+    // }
 
-    await order.save()
+    // console.log("Order Model", orderModel);
+
+    let order = new Order({
+        ...orderModel,
+        userId,
+        status: "inprogress",
+    });
+
+    // console.log("Order Recieved", order);
+
+    await order.save();
 }
 
 export async function getCustomerOrders(userId){

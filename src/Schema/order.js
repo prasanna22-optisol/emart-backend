@@ -1,4 +1,5 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+
 const orderSchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
   date: Date,
@@ -8,4 +9,4 @@ const orderSchema = new mongoose.Schema({
   status: String,
 });
 const Order = mongoose.model("orders", orderSchema);
-module.exports = Order;
+export default Order
