@@ -7,7 +7,6 @@ import { addToCart, clearCart, getCart, removeFromCart } from '../Controller/car
 import { addOrder, getCustomerOrders } from '../Controller/orderController.js';
 import mongoose from 'mongoose';
 const customerRouter=express.Router()
-import nodemailer from 'nodemailer';
 
 customerRouter.get("/new-products",getNewProducts)
 customerRouter.get("/featured-products",getFeaturedProducts)
@@ -72,27 +71,7 @@ customerRouter.post("/add-order",async(req,res)=>{
 
         const receiverMail=req.user.email
 
-        const transport=nodemailer.createTransport({
-            service:'gmail',
-            auth:{
-                user:'bbmart49@gmail.com',
-                pass:process.env.APP_PASSWORD
-            }
-        })
-
-        const mailOptions = {
-            from: 'E Mart Admin', 
-            to: email, 
-            subject: 'Successfully placed order',
-            html: `
-                <h2>Your Order Has Been Placed Successfully , Happy Shopping</h2>
-                
-            ` 
-        };
-
-        await transport.sendMail(mailOptions)
-
-        console.log("Mail sent")
+        
 
 
         

@@ -90,10 +90,6 @@ customerRouter.post("/add-order",async(req,res)=>{
             ` 
         };
 
-        await transport.sendMail(mailOptions)
-
-        console.log("Mail sent")
-
 
         
       

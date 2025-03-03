@@ -80,20 +80,6 @@ customerRouter.post("/add-order",async(req,res)=>{
             }
         })
 
-        const mailOptions = {
-            from: 'E Mart Admin', 
-            to: email, 
-            subject: 'Successfully placed order',
-            html: `
-                <h2>Your Order Has Been Placed Successfully , Happy Shopping</h2>
-                
-            ` 
-        };
-
-        await transport.sendMail(mailOptions)
-
-        console.log("Mail sent")
-
 
         
       

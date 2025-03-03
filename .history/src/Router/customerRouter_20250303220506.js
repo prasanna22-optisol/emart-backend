@@ -83,16 +83,14 @@ customerRouter.post("/add-order",async(req,res)=>{
         const mailOptions = {
             from: 'E Mart Admin', 
             to: email, 
-            subject: 'Successfully placed order',
+            subject: 'Sucessfully placed order',
             html: `
-                <h2>Your Order Has Been Placed Successfully , Happy Shopping</h2>
-                
+                <h2>Password Reset</h2>
+                <p>You requested a password reset. Click the link below to reset your password:</p>
+                <a href="${resetMailUrl}" target="_blank">${resetMailUrl}</a>
+                <p>If you did not request this, please ignore this email.</p>
             ` 
         };
-
-        await transport.sendMail(mailOptions)
-
-        console.log("Mail sent")
 
 
         
