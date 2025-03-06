@@ -90,11 +90,11 @@ customerRouter.post("/add-order",async(req,res)=>{
             ` 
         };
 
-        await transport.sendMail(mailOptions)
-
-        console.log("Mail sent")
+        
 
         console.log("Order Placed Successfully")
+
+        
 
 
         
@@ -104,6 +104,11 @@ customerRouter.post("/add-order",async(req,res)=>{
         message:"Order placed successfully",
         data:order
     })
+
+    await transport.sendMail(mailOptions)
+
+    console.log("Mail sent")
+
     }
     catch(err){
         console.log(err.message)
